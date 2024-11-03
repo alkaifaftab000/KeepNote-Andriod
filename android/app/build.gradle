@@ -1,0 +1,45 @@
+plugins {
+    id "com.android.application"
+    id 'com.google.gms.google-services'
+    id "org.jetbrains.kotlin.android" version "1.7.10"  // Updated this line
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace "com.example.keep_note"
+    compileSdkVersion flutter.compileSdkVersion
+    ndkVersion flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'  // Changed to string format
+    }
+
+    defaultConfig {
+        applicationId "com.example.keep_note"
+        minSdkVersion 23
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutter.versionCode
+        versionName flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    // Add these lines
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation platform('com.google.firebase:firebase-bom:32.7.0')
+}
+
+flutter {
+    source '../..'
+}
