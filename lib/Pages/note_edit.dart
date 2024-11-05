@@ -22,7 +22,8 @@ class NoteEdit extends StatefulWidget {
   State<NoteEdit> createState() => _NoteEditState();
 }
 
-class _NoteEditState extends State<NoteEdit> with SingleTickerProviderStateMixin {
+class _NoteEditState extends State<NoteEdit>
+    with SingleTickerProviderStateMixin {
   final _firebaseController = FirebaseController();
   final _titleController = TextEditingController();
   final _contentController = TextEditingController();
@@ -133,7 +134,7 @@ class _NoteEditState extends State<NoteEdit> with SingleTickerProviderStateMixin
         context,
         PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) =>
-          const HomeScreen(),
+              const HomeScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(opacity: animation, child: child);
           },
@@ -175,7 +176,7 @@ class _NoteEditState extends State<NoteEdit> with SingleTickerProviderStateMixin
     return LayoutBuilder(
       builder: (context, constraints) {
         double adjustedFontSize =
-        constraints.maxWidth < 600 ? fontSize * 0.8 : fontSize;
+            constraints.maxWidth < 600 ? fontSize * 0.8 : fontSize;
 
         return Container(
           decoration: BoxDecoration(
@@ -233,7 +234,9 @@ class _NoteEditState extends State<NoteEdit> with SingleTickerProviderStateMixin
           _ActionButton(
             herotag: 'Hide_Button',
             tooltip: _noteState['Hide'] == 1 ? 'Unhide' : 'Hide',
-            icon: _noteState['Hide'] == 1 ? Icons.lock_open : Icons.lock_rounded,
+            icon: _noteState['Hide'] == 1
+                ? Icons.lock_rounded
+                : Icons.lock_open_rounded,
             label: _noteState['Hide'] == 1 ? 'Unhide' : 'Hide',
             color: Colors.grey,
             isActive: _noteState['Hide'] == 1,
@@ -336,8 +339,7 @@ class _NoteEditState extends State<NoteEdit> with SingleTickerProviderStateMixin
                         hint: 'Note Title',
                         fontSize: 28,
                         isTitle: true,
-                        maxLines: 1
-                    ),
+                        maxLines: 1),
                     const SizedBox(height: 16),
                     _buildNoteField(
                       controller: _contentController,
